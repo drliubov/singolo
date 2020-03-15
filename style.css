@@ -549,3 +549,10 @@ footer .social_networks {
     width: 100px;
    
 }
+
+.description, .tema{
+  display: block;
+  word-spacing: pre-wrap;
+  max-height: 240px;
+  overflow: auto;
+}
