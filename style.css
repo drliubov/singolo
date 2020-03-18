@@ -46,6 +46,7 @@ body {
 footer {
   padding-left: 40px;
   padding-right: 40px;
+  position: relative;
 }
 
 h2 {
@@ -55,8 +56,8 @@ h2 {
 }
 
 .header {
-  /* position: sticky;
-  top: 0; */
+  position: sticky;
+  top: 0;
   z-index: 4;
   height: 89px;
   font-weight: 700;
@@ -138,7 +139,6 @@ a.active {
   height: 594px;
 }
 
-
 .hidden {
   display: none;
 }
@@ -154,13 +154,11 @@ a.active {
   z-index: 1;
 }
 
-
-.slad2{
+.slad2 {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
-  
 }
 
 .slider img {
@@ -517,13 +515,13 @@ footer .social_networks {
   margin-right: 0;
 }
 
-.message-block{
-    position: absolute;
-    width: 1020px;
-    height: 660px;
-    top: 0;
-    left: 0;
-    background: #0008;
+.message-block {
+  position: absolute;
+  width: 1020px;
+  height: 660px;
+  top: 0;
+  left: 0;
+  background: #0008;
 }
 
 .message {
@@ -539,20 +537,18 @@ footer .social_networks {
   background-color: #9b9faa;
 }
 
-.frame{
-    border: 5px solid #F06C64;
-    margin-right: -10px !important;
-    margin-top: 10px !important;
+.frame {
+  border: 5px solid #f06c64;
+  margin-right: -10px !important;
+  margin-top: 10px !important;
 }
 
-.message button{
-    width: 100px;
-   
+.message button {
+  width: 100px;
 }
 
-.description, .tema{
-  display: block;
-  word-spacing: pre-wrap;
-  max-height: 240px;
-  overflow: auto;
+.anchor{
+  position: absolute;
+  left: 0px;
+  top: -89px;
 }
