@@ -1,4 +1,4 @@
-const menu = document.querySelector('.navigation');
+const linki = document.querySelectorAll('.navigation > li > a');
 
 const messageBlock = document.querySelector('.message-block');
 const message = messageBlock.querySelector('.message')
@@ -13,13 +13,47 @@ let pictures = document.querySelector('.pictures');
 const arrowLeft = document.querySelectorAll('.arrow_left');
 const arrowRight = document.querySelectorAll('.arrow_right');
 
+// header
 
-menu.onclick = (event) => {
-    if (event.target !== menu) {
-        menu.querySelectorAll('a').forEach(el => el.classList.remove('active'));
-        event.target.classList.add('active');
+for (let i = 0; i< linki.length; i++){
+    linki[i].onclick = (event) =>{
+        event.preventDefault();
+        if (i===0){
+            window.scrollTo(0,0);
+        } else if (i===1) {
+            window.scrollTo(0,600);
+        } else if (i===2) {
+            window.scrollTo(0,1100);
+        } else if (i===3) {
+            window.scrollTo(0,1969);
+        } else {
+            window.scrollTo(0,2702);
+        }
+
     }
 }
+
+document.addEventListener('scroll', onScroll);
+
+function onScroll(event){
+    const curPos = window.scrollY;
+    const sections = document.querySelectorAll('.anchor');
+    const links = document.querySelectorAll('.navigation > li > a');
+    sections.forEach((el)=>{
+       console.log(el.offsetTop-89);
+        if ((el.offsetTop-89) <= curPos && (el.offsetTop-89) + el.offsetHeight > curPos){
+            links.forEach((a) =>{
+                a.classList.remove('active');
+                if (el.getAttribute('id') === a.getAttribute('href').substring(1)){
+                    a.classList.add('active');
+                }
+            })
+            
+        }
+    })
+}
+
+// slider
 
 document.querySelector('.onv').onclick = () => {
     document.querySelector('.ofv').classList.remove('hidden');
@@ -54,6 +88,7 @@ for (let i = 0; i < arrowRight.length; i++) {
     changeSlider(arrowRight[i]);
 }
 
+// portfolio
 
 tabs.onclick = (event) => {
     if (event.target !== tabs) {
@@ -66,18 +101,6 @@ tabs.onclick = (event) => {
             arr[i].src = pic[i].src;
             arr[i].alt = pic[i].alt;
         }
-        // let arr = pictures.querySelectorAll('img');
-        // let newarr = [];
-        // let buffer = arr[0];
-        // for (let i = 0; i < arr.length; i++) {
-        //     if (i == arr.length - 1) {
-        //         newarr.push(buffer);
-        //         pictures.append(newarr[i]);
-        //     } else {
-        //         newarr.push(arr[i + 1]);
-        //         pictures.append(newarr[i]);
-        //     }
-        // }
     }
 }
 
@@ -88,6 +111,7 @@ pictures.onclick = (event) => {
     }
 }
 
+// form
 
 form.onsubmit = (event) => {
     event.preventDefault();
@@ -111,19 +135,4 @@ form.onsubmit = (event) => {
         form.querySelector('.input-name').value = '';
         form.querySelector('.input-mail').value = '';
     }
-}
-
-const anchors = document.querySelectorAll('a[href*="#"]')
-
-for (let anchor of anchors) {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault()
-    
-    const blockID = anchor.getAttribute('href').substr(1)
-    
-    document.getElementById(blockID).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    })
-  })
 }
